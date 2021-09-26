@@ -1,0 +1,28 @@
+<%- include('includes/head.ejs') %>
+    <link rel="stylesheet" href="/css/forms.css">
+    <link rel="stylesheet" href="/css/product.css">
+</head>
+
+<body>
+    <%- include('includes/navigation.ejs') %>
+
+        <main>
+            <% if (prods.length> 0){ %>
+                <form class="product-form" action="/admin/delete-product" method="POST">
+                    <div class="form-control">                  
+                        <label for="title">Title</label>                                    
+                        <select name="title">
+                            <option value="" selected></option>   
+                            <% for(let product of prods) { %>
+                                <option value="<%= product.title %>"><%= product.title %></option>   
+                            <% } %>                      
+                        </select>       
+                    </div>
+                    <button class="btn remove" type="submit">Remove Product</button>
+                </form>
+            <% }else{ %>
+                <h1>Not Products Found</h1>                    
+            <% } %>
+            <div id="message"></div>
+        </main>
+<% include('includes/end.ejs') %>
