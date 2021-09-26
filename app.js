@@ -21,5 +21,5 @@ app.use(shopRoutes);
 app.use((req, res, next) => {
     res.status(404).render('404' , {pageTitle: 'Page Not Found'});
 });
-
-app.listen(3000);
+const PORT = process.env.PORT || 5000; // So we can run on heroku || (OR) localhost:5000
+app.listen(PORT);
